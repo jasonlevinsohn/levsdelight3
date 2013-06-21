@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'levsdelight2.views.home', name='home'),
+    url(r'^$', 'levsdelight_com.views.home', name='home'),
     # url(r'^levsdelight2/', include('levsdelight2.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
