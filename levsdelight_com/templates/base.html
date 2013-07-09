@@ -1,17 +1,51 @@
 <html>
     <head>
         <title>Lev's Delight</title>
-        <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/base.css" />
+        
+        <!-- CSS for jQuery Picture Gallery -->
+        <link rel="stylesheet" href="static/css/basic.css" type="text/css" />
+        <link rel="stylesheet" href="static/css/galleriffic-2.css" type="text/css" />
+
         {% block css_includes %}{% endblock %}
+
+        {% block meta_data %}{% endblock %}
     </head>
     <body>
-        <h2>Settings</h2>
-        <!-- If you have static problems these might help: -->
-        <!-- Settings Root: <h5>{{ settingsPath }}</h5> -->
-        <!-- Project Root: <h5>{{ projectPath }}</h5> -->
-        <!-- Static Root: <h5>{{ staticPath }}</h5> -->
-        {% block content %}
-        {% endblock %}
+        <div id="wrapper">
+            <header>
+                This is the header
+
+            </header>
+
+            <h2>Settings</h2>
+            <!-- If you have static problems these might help: -->
+            <!-- Settings Root: <h5>{{ settingsPath }}</h5> -->
+            <!-- Project Root: <h5>{{ projectPath }}</h5> -->
+            <!-- Static Root: <h5>{{ staticPath }}</h5> -->
+            {% block content %}
+            {% endblock %}
+
+        </div> <!-- END - wrapper ID -->
+
+        <!-- jQuery library -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+        <!-- Gallerific JavaScript-->
+            <script type="text/javascript" src="static/js/jquery.galleriffic.js"></script>
+            <script type="text/javascript" src="static/js/jquery.opacityrollover.js"></script>
+
+        <!-- JavaScript -->
+        
+        <!-- <script type="text/javascript" src="../extjs/ext-4-0-2a/ext-all.js"></script> -->
+        <script type="text/javascript" src="static/js/ajax.js"></script>
+        <script type="text/javascript" src="static/js/addingFiles.js"></script>
+        <!-- Snow Layer -->
+        <!-- <script type="text/javascript" src="../js/snow.js"></script> -->
+        <script type="text/javascript">
+            document.write('<style>.noscript { display: none; }</style>');
+        </script>
+        
 
         {% block javascript_includes %}{% endblock %}
 
