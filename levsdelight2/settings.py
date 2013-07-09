@@ -1,5 +1,6 @@
 # Django settings for levsdelight2 project.
 import os.path
+from os import environ
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -66,7 +67,7 @@ from os.path import dirname
 SETTINGS_ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SETTINGS_ROOT, '..'))
 
-
+# We are using Amazon S3 so this should be irrelevant.
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'levsdelight_com/static')
 
 
@@ -90,8 +91,23 @@ STATICFILES_FINDERS = (
    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+# AMAZON Simple Storage Service (S3) Variables
+# We are using s3boto
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', False)
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', False)
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', False)
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE= 'storages.backends.s3boto.S3BotoStorage'
+
+# May possibly need this
+# STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+# ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+
 # Make this unique, and don't share it with anybody.
-SECRET_KEY =  os.environ['LEVSTWOKEY']
+SECRET_KEY = os.environ.get('LEVSTWOKEY', False)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -133,6 +149,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    # Django Storages for Managing Static Files with Amazon S3
+    'storages',
 )
 
 # A sample logging configuration. The only tangible logging
