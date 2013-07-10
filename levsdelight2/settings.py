@@ -100,6 +100,7 @@ else:
     # AMAZON Simple Storage Service (S3) Variables
     # We are using s3boto
     AWS_S3_SECURE_URLS = False
+    AWS_QUERYSTRING_AUTH = False
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', False)
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', False)
     # AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', False)
