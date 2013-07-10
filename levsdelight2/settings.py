@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     # Django Storages for Managing Static Files with Amazon S3
     'storages',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
