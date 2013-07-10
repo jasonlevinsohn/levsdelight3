@@ -96,11 +96,10 @@ STATICFILES_FINDERS = (
 OFFLINE = os.environ.get('OFFLINE', False)
 if OFFLINE:
     STATIC_URL = '/static/'
-    print "Are we here"
 else:
     # AMAZON Simple Storage Service (S3) Variables
     # We are using s3boto
-
+    AWS_S3_SECURE_URLS = False
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', False)
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', False)
     # AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', False)
@@ -111,9 +110,7 @@ else:
 
     STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-    print "or are we here"
 
-print STATIC_URL
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.environ.get('LEVSTWOKEY', False)
 
