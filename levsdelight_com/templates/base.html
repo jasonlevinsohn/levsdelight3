@@ -14,16 +14,19 @@
     <body>
         <div id="wrapper">
             <header>
-                This is the header
-
+                <h2>Lev's Delight</h2>
+                <h3>by Jason and Natty</h3>
             </header>
 
+            <div id="content">
             <h2>Settings</h2>
             <!-- If you have static problems these might help: -->
             <!-- Settings Root: <h5>{{ settingsPath }}</h5> -->
             <!-- Project Root: <h5>{{ projectPath }}</h5> -->
             Static Root: <h5>{{ staticPath }}</h5>
             Offline: <h5> {{ offline }} </h5>
+
+            </div>
             {% block content %}
             {% endblock %}
 

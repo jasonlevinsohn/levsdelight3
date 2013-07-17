@@ -38,7 +38,23 @@ a:focus, a:hover, a:active {
 }
 
 header {
-    background-color: blue;
-    height: 100px;
+    /* background-color: blue; */
+    background: url(../img/header-background.gif) scroll left top transparent;
+    height: 93px;
     width: 100%;
+}
+
+header > h2 {
+    font-size: 40px;
+    padding: 20px 0px 0px 10px;
+    margin: 0;
+}
+
+header > h3 {
+    padding: 0px 0px 0px 27px;
+    margin: 7px 0px 0px 0px;
+}
+
+#content {
+    background: url(../img/content-background.gif) repeat-x scroll left top #fff;
 }
