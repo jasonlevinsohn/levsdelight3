@@ -44,13 +44,21 @@ header {
     width: 100%;
 }
 
-header > h2 {
+#logo {
+    float: left;
+}
+
+#login {
+    float: right;
+}
+
+#logo > h2 {
     font-size: 40px;
     padding: 20px 0px 0px 10px;
     margin: 0;
 }
 
-header > h3 {
+#logo > h3 {
     padding: 0px 0px 0px 27px;
     margin: 7px 0px 0px 0px;
 }
