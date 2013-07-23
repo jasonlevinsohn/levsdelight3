@@ -1,5 +1,30 @@
-<form method="POST">
-    user: <input type="text" required>
-    pass: <input type="password" required>
-    <input type="submit" value="Go">
-</form>
+{% if form.errors %}
+    <div id="invalid-user">User/Pass no matchy</div>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <div class="logged-in">
+        Hi, {{ user.username }}
+    </div>
+{% else %}
+    <form method="POST" action="login/">
+        {% csrf_token %}
+        <p>
+        <label for="id_username">User:</label>
+        <input id="id_username" name="username" type="text">
+        </p>
+        <p>
+        <label for="id_password">Pass:</label>
+        <input id="id_password" name="password" type="password">
+        </p>
+
+
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% else %}
+            <input type="hidden" name="next" value="/" />
+        {% endif %}
+        <input type="submit" value="Go" />
+    </form>
+{% endif %}
+
