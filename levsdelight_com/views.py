@@ -13,12 +13,14 @@ def home(request, template='base.html'):
     pPath = settings.PROJECT_ROOT
     stPath = settings.STATIC_ROOT
     offline = settings.OFFLINE
+    staticUrl = settings.STATIC_URL
 
     return render_to_response(template, {
             'slideOne' : slideOne,
             'settingsPath' : sPath,
             'projectPath' : pPath,
             'staticPath' : stPath,
+            'staticUrl' : staticUrl,
             'offline' : offline,
         }, context_instance = RequestContext(request))
 
