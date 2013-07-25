@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.contrib.auth import logout
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from models import Slideshow
@@ -20,4 +21,10 @@ def home(request, template='base.html'):
             'staticPath' : stPath,
             'offline' : offline,
         }, context_instance = RequestContext(request))
+
+def logout_page(request):
+    
+    logout(request)
+    print "what is happening"
+    return HttpResponseRedirect('/')
 
