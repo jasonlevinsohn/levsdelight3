@@ -1,11 +1,11 @@
 <html>
     <head>
         <title>Lev's Delight</title>
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" />
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css" />
         
         <!-- CSS for jQuery Picture Gallery -->
         <!-- <link rel="stylesheet" href="static/css/basic.css" type="text/css" /> -->
-        <link rel="stylesheet" href="static/css/galleriffic-2.css" type="text/css" />
+        <link rel="stylesheet" href="{{STATIC_URL}}css/galleriffic-2.css" type="text/css" />
 
         {% block css_includes %}{% endblock %}
 
@@ -25,7 +25,7 @@
 
             <div id="content">
                 <h2>Settings</h2>
-                <img src="{{ STATIC_URL }}img/may2013-pictures/mobile-image543.jpg" width="100" height="100" />
+                <img src="{{STATIC_URL}}img/may2013-pictures/mobile-image543.jpg" width="100" height="100" />
             <!-- If you have static problems these might help: -->
             <!-- Settings Root: <h5>{{ settingsPath }}</h5> -->
             <!-- Project Root: <h5>{{ projectPath }}</h5> -->
@@ -41,18 +41,18 @@
 
         <!-- jQuery library -->
 		<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> -->
-		<script type="text/javascript" src="static/js/jquery-2.0.3.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-2.0.3.js"></script>
 
         <!-- Gallerific JavaScript-->
-            <script type="text/javascript" src="static/js/jquery-galleriffic-2.js"></script>
-            <script type="text/javascript" src="static/js/jquery.opacityrollover.js"></script>
+            <script type="text/javascript" src="{{STATIC_URL}}js/jquery-galleriffic-2.js"></script>
+            <script type="text/javascript" src="{{STATIC_URL}}js/jquery.opacityrollover.js"></script>
 
         <!-- JavaScript -->
         
         <!-- <script type="text/javascript" src="../extjs/ext-4-0-2a/ext-all.js"></script> -->
-        <!-- <script type="text/javascript" src="static/js/ajax.js"></script> -->
-        <script type="text/javascript" src="static/js/addingFiles.js"></script>
-        <script type="text/javascript" src="static/js/loginAndSuch.js"></script>
+        <!-- <script type="text/javascript" src="{{STATIC_URL}}js/ajax.js"></script> -->
+        <script type="text/javascript" src="{{STATIC_URL}}js/addingFiles.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/loginAndSuch.js"></script>
         <!-- Snow Layer -->
         <!-- <script type="text/javascript" src="../js/snow.js"></script> -->
         <script type="text/javascript">
