@@ -1,0 +1,19 @@
+#site-state {
+    padding-right: 10px;
+    font-size: 9px;
+}
+
+#site-state ul {
+    margin: 0;
+    padding: 0;
+}
+
+#site-state li {
+    list-style: none;
+    line-height: 18px;
+
+}
+
+#site-state .state {
+    color: red;
+}

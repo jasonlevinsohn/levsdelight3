@@ -2,6 +2,8 @@
     <head>
         <title>Lev's Delight</title>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css" />
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/site-state.css" />
+        
         
         <!-- CSS for jQuery Picture Gallery -->
         <!-- <link rel="stylesheet" href="static/css/basic.css" type="text/css" /> -->
@@ -20,6 +22,9 @@
                 </div>
                 <div id="login">
                     {% include 'login.html' %}
+                    <div id="site-state">
+                        {% include 'site-state.html' %}
+                    </div>
                 </div>
             </header>
 
@@ -33,9 +38,8 @@
             Are we Offline: <h5> {{ offline }} </h5>
             Static URL: <h5> {{ staticUrl }} </h5>
 
+                {% block content %}{% endblock %}
             </div>
-            {% block content %}
-            {% endblock %}
 
         </div> <!-- END - wrapper ID -->
 

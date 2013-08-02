@@ -5,7 +5,7 @@ from django.template import RequestContext
 from models import Slideshow
 from levsdelight2 import settings
 
-def home(request, template='base.html'):
+def home(request, template='slideshow.html'):
     
     slideOne = Slideshow.objects.get(pk=1)
     print slideOne
@@ -14,6 +14,7 @@ def home(request, template='base.html'):
     stPath = settings.STATIC_ROOT
     offline = settings.OFFLINE
     staticUrl = settings.STATIC_URL
+    allSlides = Slideshow.objects.all()
 
     return render_to_response(template, {
             'slideOne' : slideOne,
@@ -22,6 +23,7 @@ def home(request, template='base.html'):
             'staticPath' : stPath,
             'staticUrl' : staticUrl,
             'offline' : offline,
+            'allSlides' : allSlides,
         }, context_instance = RequestContext(request))
 
 def logout_page(request):
