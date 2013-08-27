@@ -59,12 +59,12 @@
         <script type="text/javascript" src="{{STATIC_URL}}js/loginAndSuch.js"></script>
         <!-- Snow Layer -->
         <!-- <script type="text/javascript" src="../js/snow.js"></script> -->
+        {% block javascript_includes %}{% endblock %}
         <script type="text/javascript">
             document.write('<style>.noscript { display: none; }</style>');
         </script>
         
 
-        {% block javascript_includes %}{% endblock %}
 
     </body>
 </html>

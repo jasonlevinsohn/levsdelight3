@@ -98,6 +98,7 @@
 
 	// Primary Galleriffic initialization function that should be called on the thumbnail container.
 	$.fn.galleriffic = function(settings) {
+        console.log("Initializing Gallerific");
 		//  Extend Gallery Object
 		$.extend(this, {
 			// Returns the version of the script
@@ -539,8 +540,10 @@
 						.find('div.nav-controls a.next').attr('href', '#'+this.data[this.getNextIndex(index)].hash);
 				}
 
-				var previousSlide = this.$imageContainer.find('span.current').addClass('previous').removeClass('current');
-				var previousCaption = 0;
+                    var previousSlide = this.$imageContainer.find('span.current').addClass('previous').removeClass('current');
+                    var previousCaption = 0;
+
+                
 
 				if (this.$captionContainer) {
 					previousCaption = this.$captionContainer.find('span.current').addClass('previous').removeClass('current');
