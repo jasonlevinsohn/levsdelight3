@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
+{% block css_includes %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/slideshow.css" />
+{% endblock %}
+
 {% block content %}
+
 <div id="controls"></div>
 <div id="loading"></div>
 <div id="slideshow"></div>
@@ -27,6 +32,23 @@
 {% block javascript_includes %}
 <script type="text/javascript">
 
+var renderPictureChooser = function(slideArray) {
+
+    var pcTemplate = '<div class="pictureChooser"><ul>';
+
+    for(var i = 0; i < slideArray.length; i++) {
+        pcTemplate += '<li class="pcThumb"><img src="' +
+            slideArray[i].href + '" alt="' +
+            slideArray[i].title + '" /></li>';
+    
+    }
+
+    pcTemplate += '</ul></div>';
+
+    $('ul.thumbs').remove();
+    $('div#thumbs').append(pcTemplate);
+
+}
     var buildSlides = function() {
 
         var image, aEl, caption, href, title, desc;
@@ -54,9 +76,15 @@
         console.log("The slides");
         console.log(slides);
 
+        return slides;
+
     }
 
-    buildSlides();
+
+    var theSlides = buildSlides();
+
+    renderPictureChooser(theSlides);
+
 
 
 </script>
