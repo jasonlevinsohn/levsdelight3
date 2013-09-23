@@ -30,6 +30,8 @@
 
     </ul>
 </div> <!-- END thumbs -->
+<div id="pictureViewer"></div>
+
 
 
 {% endblock %}
@@ -38,24 +40,52 @@
 <script type="text/javascript" src="{{STATIC_URL}}js/vendor/lodash.min.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/vendor/s3upload.js"></script>
 <script type="text/javascript">
+    var slideImage = "";
+    var currentSlide = 0;
 
-var renderPictureChooser = function(slideArray) {
 
-    var pcTemplate = '<div class="pictureChooser"><ul>';
+    var renderPictureViewer = function(slideArray) {
+        var pvTemplate = '<div class="slide"></div>';
+        pvTemplate = $(pvTemplate)
+        
+        slideImage = '<img src="' +
+            slideArray[currentSlide].href + '" alt="' +
+            slideArray[currentSlide].title + '" />';
 
-    for(var i = 0; i < slideArray.length; i++) {
-        pcTemplate += '<li class="pcThumb"><img src="' +
-            slideArray[i].href + '" alt="' +
-            slideArray[i].title + '" /></li>';
-    
+        pvTemplate.append(slideImage);
+        $('div#pictureViewer').append(pvTemplate)
+
+        console.log(slideImage);
+
+
     }
 
-    pcTemplate += '</ul></div>';
+    var nextSlide = function() {
 
-    $('ul.thumbs').remove();
-    $('div#thumbs').append(pcTemplate);
+    }
 
-}
+
+
+
+    var renderPictureChooser = function(slideArray) {
+
+        var pcTemplate = '<div class="pictureChooser"><ul>';
+
+        for(var i = 0; i < slideArray.length; i++) {
+            pcTemplate += '<li class="pcThumb"><img src="' +
+                slideArray[i].href + '" alt="' +
+                slideArray[i].title + '" /></li>';
+        
+        }
+
+        pcTemplate += '</ul></div>';
+
+        $('ul.thumbs').remove();
+        $('div#thumbs').append(pcTemplate);
+
+    }
+
+
     var buildSlides = function() {
 
         var image, aEl, caption, href, title, desc;
@@ -91,6 +121,8 @@ var renderPictureChooser = function(slideArray) {
     var theSlides = buildSlides();
 
     renderPictureChooser(theSlides);
+
+    renderPictureViewer(theSlides);
 
 
 
