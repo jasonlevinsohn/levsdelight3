@@ -42,9 +42,10 @@
 <script type="text/javascript">
     var slideImage = "";
     var currentSlide = 0;
+    var slideArray = [];
 
 
-    var renderPictureViewer = function(slideArray) {
+    var renderPictureViewer = function() {
         var pvTemplate = '<div class="slide"></div>';
         pvTemplate = $(pvTemplate)
         
@@ -59,20 +60,38 @@
 
 
     }
-
+    
+    // Renders the next slide in the array
     var nextSlide = function() {
+
+    }
+
+    // Renders the previous slide in the array
+    var prevSlide = function() {
+
+    }
+
+    // Renders the selection in the picture viewer
+    var showInViewer = function(index) {
+        var dur = 400;
+        var fadeBackIn = function() {
+                $('.slide img').attr('src', slideArray[index].href);
+                $('.slide img').fadeTo(dur, 1);
+        };
+
+        $('.slide img').fadeTo(dur, 0, fadeBackIn);
 
     }
 
 
 
 
-    var renderPictureChooser = function(slideArray) {
+    var renderPictureChooser = function() {
 
         var pcTemplate = '<div class="pictureChooser"><ul>';
 
         for(var i = 0; i < slideArray.length; i++) {
-            pcTemplate += '<li class="pcThumb"><img src="' +
+            pcTemplate += '<li onClick="showInViewer('+ i +')" class="pcThumb"><img src="' +
                 slideArray[i].href + '" alt="' +
                 slideArray[i].title + '" /></li>';
         
@@ -118,11 +137,11 @@
     }
 
 
-    var theSlides = buildSlides();
+    var slideArray = buildSlides();
 
-    renderPictureChooser(theSlides);
+    renderPictureChooser();
 
-    renderPictureViewer(theSlides);
+    renderPictureViewer();
 
 
 
