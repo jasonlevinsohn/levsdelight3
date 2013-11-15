@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block css_includes %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/slideshow.css" />
+{% endblock %}
+
+{% block content %}
+<h2>Your avatar</h2>
+
+<p id="status">Please select a file</p>
+<div style="border:1px solid gray;width:300px;"  id="preview"><img src="{{STATIC_URL}}img/default.png" style="width:300px;" /></div>
+
+<h2>Your information</h2>
+
+<form method="POST" action="https://levsdelight3.s3.amazonaws.com/" enctype="multipart/form-data">
+    <!-- <input type="text" name="username" placeholder="Username" /><br /> -->
+    <!-- <input type="text" name="full_name" placeholder="Full name" /><br /><br /> -->
+    <input type="hidden" name="key" value="">
+    <input type="hidden" name="AWSAccessKeyId" value="YOUR_AWS_ACCESS_KEY"> 
+    <input type="hidden" name="acl" value="public-read"> 
+    <input type="hidden" name="policy" value="YOUR_POLICY_DOCUMENT_BASE64_ENCODED">
+    <input type="hidden" name="signature" value="YOUR_CALCULATED_SIGNATURE">
+    <input type="hidden" name="Content-Type" value="image/jpeg">
+
+    <input type="file" id="file" name="file" onchange="s3_upload2();">
+
+    <hr />
+    <h2>Save changes</h2>
+
+    <input type="submit" value="Update to S3" />
+</form>
+
+
+
+
+{% endblock %}
+
+{% block javascript_includes %}
+<script type="text/javascript" src="{{STATIC_URL}}js/vendor/lodash.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/vendor/s3upload.js"></script>
+<script type="text/javascript">
+
+    function s3_upload() {
+        var s3upload = new S3Upload({
+            file_dom_selector: '#file',
+            s3_sign_put_url: '/sign_s3_upload',
+
+        onProgress: function(percent, message) { 
+            $('#status').html('Upload progress: ' + percent + '%' + message);
+        },
+
+        onFinishS3Put: function(url) { 
+            $('#status').html('Upload completed. Uploaded to: '+ url);
+            $("#avatar_url").val(public_url);
+            $("#preview").html('<img src="'+public_url+'" style="width:300px;" />');
+
+            // Write the image file data to the database for viewing
+            $.ajax({
+                url: '/write_image_to_database',
+                type: "POST",
+                beforeSend: function() {
+                    console.log("Sending the Image Data");
+                },
+
+                complete: function(msg) {
+                    var data;
+                    data = JSON.parse(msg.responseText);
+                    console.log("Image File Uploaded.");
+                    console.log(data); 
+                },
+
+                error: function(err) {
+                    console.log("We got problems: ");
+                    console.log(err);
+                    var parsedErr = JSON.parse(err);
+                    console.log(parsedErr);
+                }
+            });
+            
+        },
+
+        onError: function(status) {
+            $('#status').html('Upload error: ' + status);
+        }
+        });
+    }
+
+function s3_upload2() {
+    fileToUpload = $('#file')[0].files[0]
+    filename = fileToUpload.name
+    filetype = fileToUpload.type
+    console.log(fileToUpload)
+    window.daFile = fileToUpload
+    
+    // Get the policy document and the signature.
+    $.ajax({
+        url: '/get_signature_for_browser/',
+        type: 'POST',
+        data: {
+            name: filename,
+            type: filetype
+        },
+        success: function(msg) {
+            console.log("Signature Generated: ", msg);
+            parsed = JSON.parse(msg);
+            $('input[name=key]').val('img/' + filename);
+            $('input[name=AWSAccessKeyId]').val(parsed.access_id)
+            $('input[name=policy]').val(parsed.policy);
+            $('input[name=signature]').val(parsed.sig);
+        },
+        error: function(error) {
+            console.log("Error Generating Signature: ", error);
+        }
+        });
+
+       
+}
+
+</script>
+
+{% endblock %}

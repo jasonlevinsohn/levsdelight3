@@ -1,0 +1,28 @@
+{% if form.errors %}
+    <div id="invalid-user">User/Pass no matchy</div>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <div class="logged-in">
+        Hi, <span id="user">{{ user.username }}</span>
+        <a href="/logout">Get On Then</a>
+    </div>
+{% else %}
+    <form method="POST" action="login/">
+        {% csrf_token %}
+        
+        <label for="id_username">User:</label>
+        <input id="id_username" name="username" type="text">
+        <label for="id_password">Pass:</label>
+        <input id="id_password" name="password" type="password">
+
+
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% else %}
+            <input type="hidden" name="next" value="/" />
+        {% endif %}
+        <input type="submit" value="Go" />
+    </form>
+{% endif %}
+
