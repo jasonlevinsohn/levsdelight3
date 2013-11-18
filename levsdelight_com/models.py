@@ -25,4 +25,3 @@ class MonthMap(models.Model):
 # to register it with the admin library. 
 # Open levsdelight_com/admin.py
 # admin.site.register(<model_name>)
-
