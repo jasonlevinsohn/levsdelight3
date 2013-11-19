@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Slideshow
+from models import Slideshow, MonthMap
 from django.views.decorators.csrf import csrf_exempt
 from levsdelight2 import settings
 import json, os, time, base64, hmac, sha, urllib, hashlib
@@ -36,7 +36,7 @@ def home(request, template='slideshow.html'):
 
 
 def slideshow(request, year=None, month=None, template='slideshow.html'):
-    slideOne = Slideshow.objects.get(pk=1)
+
     print "The selected slideshow is %s %s" % (month, year)
     sPath = settings.SETTINGS_ROOT
     pPath = settings.PROJECT_ROOT
@@ -44,10 +44,17 @@ def slideshow(request, year=None, month=None, template='slideshow.html'):
     offline = settings.OFFLINE
     staticUrl = settings.STATIC_URL
     # allSlides = Slideshow.objects.all()
-    allSlides = Slideshow.objects.filter(slideshow_id=1)
+
+    # Get the slideshow id
+    # ******** NOTE: We need an exception here for invalid URL ***********
+    mapObject = MonthMap.objects.filter(month=month, year=year)
+        
+    map_id = mapObject[0].slideshow_id
+    objects_returned = mapObject.count()
+    print "Slideshow Id: %s and the count is: %s" % (map_id, objects_returned)
+    allSlides = Slideshow.objects.filter(slideshow_id=map_id)
 
     return render_to_response(template, {
-            'slideOne' : slideOne,
             'settingsPath' : sPath,
             'projectPath' : pPath,
             'staticPath' : stPath,

@@ -10,7 +10,7 @@ class Slideshow(models.Model):
     pub_date = models.DateTimeField('date_pubished')
 
     def __unicode__(self):
-        return "Id: \"%s\" - Title: \"%s\" for Slideshow: \"%s\"" % (self.slideshow_id, self.title, str(self.slideshow_id))
+        return "Id: \"%s\" - Title: \"%s\" for Slideshow: \"%s\" - Order: \"%s\"" % (self.slideshow_id, self.title, str(self.slideshow_id), str(self.order_id))
 
 
 class MonthMap(models.Model):
