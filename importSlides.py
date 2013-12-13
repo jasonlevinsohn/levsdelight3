@@ -2,7 +2,7 @@ from levsdelight_com.models import Slideshow
 import csv
 import datetime
 
-with open('november-slides.csv', 'rb') as csvfile:
+with open('jan-feb-slides.csv', 'rb') as csvfile:
     reader = csv.reader(csvfile, delimiter=';', quotechar='"')
     for row in reader:
         print row[1]

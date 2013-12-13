@@ -51,7 +51,9 @@
         
         slideImage = '<img src="' +
             slideArray[currentSlide].href + '" alt="' +
-            slideArray[currentSlide].title + '" />';
+            slideArray[currentSlide].title + '" />' + 
+            '<div class="title">' + slideArray[currentSlide].title + '</div>' +
+            '<div class="desc">' + slideArray[currentSlide].desc + '</div>';
 
         pvTemplate.append(slideImage);
         $('div#pictureViewer').append(pvTemplate)
@@ -77,6 +79,9 @@
         var fadeBackIn = function() {
                 $('.slide img').attr('src', slideArray[index].href);
                 $('.slide img').fadeTo(dur, 1);
+                $('.slide .title').text(slideArray[index].title);
+                $('.slide .desc').text(slideArray[index].desc);
+
         };
 
         $('.slide img').fadeTo(dur, 0, fadeBackIn);
@@ -94,6 +99,8 @@
             pcTemplate += '<li onClick="showInViewer('+ i +')" class="pcThumb"><img src="' +
                 slideArray[i].href + '" alt="' +
                 slideArray[i].title + '" /></li>';
+
+            console.log("The title: " + slideArray[i].title);
         
         }
 
