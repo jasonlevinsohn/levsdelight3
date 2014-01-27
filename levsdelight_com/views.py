@@ -106,7 +106,7 @@ def get_signature_for_browser(request):
 
     # Policy Document
     policy = """{
-            "expiration" : "2014-01-01T00:00:00Z",
+            "expiration" : "2015-01-01T00:00:00Z",
             "conditions" : [
                 {"bucket": "%s"},
                 {"acl": "public-read"},
@@ -146,7 +146,7 @@ def sign_s3_upload(request):
 
     # Policy Document
     policy = """{
-            "expiration" : "2014-01-01T00:00:00Z",
+            "expiration" : "2015-01-01T00:00:00Z",
             "conditions" : [
                 {"bucket": "%s"},
                 {"acl": "public-read"},
