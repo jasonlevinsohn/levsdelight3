@@ -98,7 +98,7 @@ def get_signature_for_browser(request):
 
     AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID', False)
     AWS_SECRET_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', False)
-    S3_BUCKET = 'levsdelight3'
+    S3_BUCKET = 'levsdelight'
     S3_BUCKET_FOLDER = 'img'
 
     object_name = request.REQUEST.get('name')
@@ -140,7 +140,7 @@ def sign_s3_upload(request):
 
     AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID', False)
     AWS_SECRET_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', False)
-    S3_BUCKET = 'levsdelight3'
+    S3_BUCKET = 'levsdelight'
     S3_BUCKET_FOLDER = 'img'
 
 
