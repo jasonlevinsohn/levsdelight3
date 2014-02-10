@@ -6,7 +6,7 @@ from models import Slideshow, MonthMap
 from django.views.decorators.csrf import csrf_exempt
 from levsdelight2 import settings
 import json, os, time, base64, hmac, sha, urllib, hashlib
-import re
+import re, datetime
 
 
 def test_upload(request, template='testupload.html'):
@@ -122,7 +122,20 @@ def write_image_to_database(request):
     # Get the last 4 chars of string
     yearNumber = month[-4:]
 
+    # Get the month map id
     monthId = MonthMap.objects.get(month=monthName, year=yearNumber)
+
+    # Create a new slideshow object
+    picture_object = Slideshow(
+            title=title,
+            desc=desc,
+            pictureLocation=filePath,
+            isActive=True,
+            slideshow_id=monthId.slideshow_id,
+            order_id=0,
+            pub_date=datetime.datetime.now())
+
+    picture_object.save()
 
 
     print "The file %s has a title of %s and desc: %s" % (filePath, title, desc)
