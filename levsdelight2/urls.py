@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     # Main Urls
+    # %%%%%%%%%%% SHOULD DEFAULT THIS TO CURRENT YEAR AND MONTH %%%%%%%%%%%%%%
     url(r'^$', 'levsdelight_com.views.home', name='home'),
     url(r'^slideshow/(?P<year>\d{4})/(?P<month>[^/]+)/$', 'levsdelight_com.views.slideshow', name='slideshow'),
 

@@ -6,6 +6,9 @@ from models import Slideshow, MonthMap
 from django.views.decorators.csrf import csrf_exempt
 from levsdelight2 import settings
 import json, os, time, base64, hmac, sha, urllib, hashlib
+import re
+
+
 def test_upload(request, template='testupload.html'):
 
     test_upload_var = 'This is the test upload var.'
@@ -54,6 +57,10 @@ def slideshow(request, year=None, month=None, template='slideshow.html'):
     print "Slideshow Id: %s and the count is: %s" % (map_id, objects_returned)
     allSlides = Slideshow.objects.filter(slideshow_id=map_id)
 
+    print "The value of all slides: "
+    print allSlides
+    # @@@@@@@@@@@ LAST MOD @@@@@@@@@@@@@@@@@@
+
     return render_to_response(template, {
             'settingsPath' : sPath,
             'projectPath' : pPath,
@@ -90,8 +97,38 @@ def upload_image(request):
 
     return HttpResponse("Hey, I appreciate the file. \n\n %s" % (report))
 
+@csrf_exempt
 def write_image_to_database(request):
     print "Write that stuff"
+    filePath = request.REQUEST['path']
+    title = request.REQUEST['title']
+    desc = request.REQUEST['desc']
+    month = request.REQUEST['month']
+
+    # Parse out the month name
+    # Match:
+    # ---- ^ Starting at beginning of string
+    # ---- . anything
+    # ---- * zero or more occurances
+    # ---- ? Lazily (not greedy)
+    # ---- (?=) Asserting looking ahead
+    # ---- \d match everything before a digit
+
+
+    monthReg = re.compile("^.*?(?=\d)")
+    m = monthReg.match(month)
+    monthName = m.group()
+
+    # Get the last 4 chars of string
+    yearNumber = month[-4:]
+
+    monthId = MonthMap.objects.get(month=monthName, year=yearNumber)
+
+
+    print "The file %s has a title of %s and desc: %s" % (filePath, title, desc)
+    print "The Month has an id of: %s" % (monthId.slideshow_id)
+    
+    return HttpResponse("The server says: Picture has been persisted")
 
 @csrf_exempt
 def get_signature_for_browser(request):
