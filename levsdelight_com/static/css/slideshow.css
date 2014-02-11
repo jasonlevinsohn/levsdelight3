@@ -32,3 +32,10 @@ body {
     vertical-align: top;
     margin-left: 60px;
 }
+
+#page-navigation {
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    border: 1px solid #000;
+}
