@@ -1,2 +1,16 @@
 1. Create sub-file of two months of data from sllideshow-demo.csv.
+2. Main csv file is ~/Desktop/slideshows\ \(1\).csv
+3. Replace all "-pictures" matches with blank ""
+4. Replace all the ;; with ;""; like this :s/;;/;"";
+5. Make sure to copy all things gg then ^G and probably do that twice to make
+   sure you got everything.
+6. Change line 5 in importSlides.py to reflect the new file.
+7. Commit the changes and upload them to Heroku
+8. Run the importSlides.py file on the heroku server.
+   heroku run python manage.py shell < importSlides.py
 
+NOTE: If you mess any of this up, it is possible to delete records with this:
+from levsdelight_com.models import Slideshow
+
+records = Slideshow.objects.filter(slideshow_id=[ id_to_remove ])
+records.delete()
