@@ -18,24 +18,15 @@ def test_upload(request, template='testupload.html'):
         }, context_instance = RequestContext(request))
 
 def home(request, template='slideshow.html'):
-    slideOne = Slideshow.objects.get(pk=1)
-    print slideOne
-    sPath = settings.SETTINGS_ROOT
-    pPath = settings.PROJECT_ROOT
-    stPath = settings.STATIC_ROOT
-    offline = settings.OFFLINE
-    staticUrl = settings.STATIC_URL
-    allSlides = Slideshow.objects.all()
 
-    return render_to_response(template, {
-            'slideOne' : slideOne,
-            'settingsPath' : sPath,
-            'projectPath' : pPath,
-            'staticPath' : stPath,
-            'staticUrl' : staticUrl,
-            'offline' : offline,
-            'allSlides' : allSlides,
-        }, context_instance = RequestContext(request))
+    # Redirect the home page to the current month.
+    today = datetime.datetime.now()
+    month = today.strftime('%B').lower()
+    year = today.strftime('%Y')
+
+    newPath = "slideshow/%s/%s" % (year, month)
+
+    return HttpResponseRedirect(newPath)
 
 
 def slideshow(request, year=None, month=None, template='slideshow.html'):
