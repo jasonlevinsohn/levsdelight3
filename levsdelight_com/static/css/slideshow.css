@@ -5,6 +5,32 @@ body {
     display: inline-block;
 }
 
+#pagination {
+    height: 50px;
+    width: 200px;
+    margin: 40px 0px 0px 14px;
+    padding: 10px 0px 0px 10px;
+    box-sizing: border-box;
+}
+
+#pagination .page {
+    border: 1px solid hsl(0, 0%, 0%);
+    padding: 4px 10px 4px 10px;
+    font-size: 20px;
+    color: hsl(0, 0%, 0%);
+    margin-right: 5px;
+}
+
+#pagination .page:hover {
+    color: hsl(0, 100%, 100%);
+    background-color: hsl(91, 42%, 50%);
+}
+
+#pagination .page.active {
+    color: hsl(0, 100%, 100%);
+    background-color: hsl(247, 100%, 52%);
+}
+
 .pictureChooser {
     width: 270px;
     height: 500px;
@@ -42,4 +68,16 @@ body {
 
 #pictureViewer .slide img {
     width: 550px;
+
+    /* Cool Zoom Transition Effect */
+    -webkit-transition: all .4s ease-in-out;
+       -moz-transition: all .4s ease-in-out;
+        -ms-transition: all .4s ease-in-out;
+}
+
+#pictureViewer .slide img:hover {
+    -webkit-transform: scale(1.7);
+       -moz-transform: scale(1.7);
+        -ms-transform: scale(1.7);
+         -o-transform: scale(1.7);
 }

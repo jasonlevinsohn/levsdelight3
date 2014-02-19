@@ -29,8 +29,23 @@
         {% endfor %}
 
     </ul>
+    <div id="pagination">
+
+    </div>
 </div> <!-- END thumbs -->
-<div id="pictureViewer"></div>
+
+
+<div id="pictureViewer">
+    <div class="slide">
+        <img src="" />
+        <div class="title"></div>
+        <div class="desc"></div>
+    </div>
+
+
+        
+
+</div>
 
 <div id="page-navigation">
     {% include 'page-navigation.html' %}
@@ -41,120 +56,6 @@
 {% block javascript_includes %}
 <script type="text/javascript" src="{{STATIC_URL}}js/vendor/lodash.min.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/vendor/s3upload.js"></script>
-<script type="text/javascript">
-    var slideImage = "";
-    var currentSlide = 0;
-    var slideArray = [];
-
-
-    var renderPictureViewer = function() {
-        var pvTemplate = '<div class="slide"></div>';
-        pvTemplate = $(pvTemplate)
-        
-        slideImage = '<img src="' +
-            slideArray[currentSlide].href + '" alt="' +
-            slideArray[currentSlide].title + '" />' + 
-            '<div class="title">' + slideArray[currentSlide].title + '</div>' +
-            '<div class="desc">' + slideArray[currentSlide].desc + '</div>';
-
-        pvTemplate.append(slideImage);
-        $('div#pictureViewer').append(pvTemplate)
-
-        console.log(slideImage);
-
-
-    }
-    
-    // Renders the next slide in the array
-    var nextSlide = function() {
-
-    }
-
-    // Renders the previous slide in the array
-    var prevSlide = function() {
-
-    }
-
-    // Renders the selection in the picture viewer
-    var showInViewer = function(index) {
-        var dur = 400;
-        var fadeBackIn = function() {
-                $('.slide img').attr('src', slideArray[index].href);
-                $('.slide img').fadeTo(dur, 1);
-                $('.slide .title').text(slideArray[index].title);
-                $('.slide .desc').text(slideArray[index].desc);
-
-        };
-
-        $('.slide img').fadeTo(dur, 0, fadeBackIn);
-
-    }
-
-
-
-
-    var renderPictureChooser = function() {
-
-        var pcTemplate = '<div class="pictureChooser"><ul>';
-
-        for(var i = 0; i < slideArray.length; i++) {
-            pcTemplate += '<li onClick="showInViewer('+ i +')" class="pcThumb"><img src="' +
-                slideArray[i].href + '" alt="' +
-                slideArray[i].title + '" /></li>';
-
-            console.log("The title: " + slideArray[i].title);
-        
-        }
-
-        pcTemplate += '</ul></div>';
-
-        $('ul.thumbs').remove();
-        $('div#thumbs').append(pcTemplate);
-
-    }
-
-
-    var buildSlides = function() {
-
-        var image, aEl, caption, href, title, desc;
-        var slides = [];
-        var slideObj = {};
-        var images = $('#thumbs').find('li');
-
-        for (var i = 0; i < images.length; i++ ) {
-            image = $(images[i]);
-            aEl = $(image.children()[0]);
-            caption = $(image.children()[1]);
-            href = aEl.attr('href');
-            title = aEl.attr('title');
-            desc = caption.text();
-            
-            slideObj = {
-                title: title,
-                href: href,
-                desc: desc,
-            };
-            slides.push(slideObj);
-            slideObj = {};
-        }
-
-        console.log("The slides");
-        console.log(slides);
-
-        return slides;
-
-    }
-
-
-    var slideArray = buildSlides();
-
-    renderPictureChooser();
-
-    renderPictureViewer();
-
-
-
-</script>
-
+<script type="text/javascript" src="{{STATIC_URL}}js/slideshow.js"></script>
 
 {% endblock %}
