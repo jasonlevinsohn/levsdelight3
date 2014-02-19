@@ -3,12 +3,16 @@
     var currentPage = 1;
     var slideArray = [];
     var pagesArray = [];
+    var s3link = "https://s3.amazonaws.com/levsdelight/img/";
 
 
     var renderPictureViewer = function(currentPage) {
-        $('.slide img').attr('src', currentPage[currentSlide].href);
+        var href = currentPage[currentSlide].href
+        $('.slide img').attr('src', href);
         $('.slide .title').text(currentPage[currentSlide].title);
         $('.slide .desc').text(currentPage[currentSlide].desc);
+
+        $('.download-link a').attr('href', s3link + href)
     }
     
     // Renders the next slide in the array
@@ -25,10 +29,12 @@
     var showInViewer = function(index) {
         var dur = 400;
         var fadeBackIn = function() {
-                $('.slide img').attr('src', pagesArray[currentPage][index].href);
+                var href = pagesArray[currentPage][index].href;
+                $('.slide img').attr('src', href);
                 $('.slide img').fadeTo(dur, 1);
                 $('.slide .title').text(pagesArray[currentPage][index].title);
                 $('.slide .desc').text(pagesArray[currentPage][index].desc);
+                $('.download-link a').attr('href', s3link + href);
 
         };
 

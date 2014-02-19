@@ -81,3 +81,7 @@ body {
         -ms-transform: scale(1.7);
          -o-transform: scale(1.7);
 }
+
+.download-link {
+    text-align: right;
+}
