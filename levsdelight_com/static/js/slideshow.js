@@ -3,7 +3,6 @@
     var currentPage = 1;
     var slideArray = [];
     var pagesArray = [];
-    var s3link = "https://s3.amazonaws.com/levsdelight/img/";
 
 
     var renderPictureViewer = function(currentPage) {
@@ -12,7 +11,7 @@
         $('.slide .title').text(currentPage[currentSlide].title);
         $('.slide .desc').text(currentPage[currentSlide].desc);
 
-        $('.download-link a').attr('href', s3link + href)
+        $('.download-link a').attr('href', href)
     }
     
     // Renders the next slide in the array
@@ -34,7 +33,7 @@
                 $('.slide img').fadeTo(dur, 1);
                 $('.slide .title').text(pagesArray[currentPage][index].title);
                 $('.slide .desc').text(pagesArray[currentPage][index].desc);
-                $('.download-link a').attr('href', s3link + href);
+                $('.download-link a').attr('href', href);
 
         };
 
