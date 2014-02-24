@@ -66,6 +66,10 @@ body {
     border: 1px solid #000;
 }
 
+#pictureViewer .slide {
+    margin-top: 15px;
+}
+
 #pictureViewer .slide img {
     width: 550px;
 

@@ -9,6 +9,10 @@
         <!-- <link rel="stylesheet" href="static/css/basic.css" type="text/css" /> -->
         <link rel="stylesheet" href="{{STATIC_URL}}css/galleriffic-2.css" type="text/css" />
 
+        <!-- Page Navigation -->
+        <link rel="stylesheet" href="{{STATIC_URL}}css/page-navigation.css" type="text/css" />
+
+
         {% block css_includes %}{% endblock %}
 
         {% block meta_data %}{% endblock %}
@@ -28,7 +32,7 @@
                 </div>
             </header>
             <nav>
-
+                {% include 'page-navigation.html' %}
             </nav>
 
             <div id="content">
