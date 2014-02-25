@@ -9,6 +9,7 @@ nav {
 
 }
 
+
 /* If something isn't right uncomment this */
 nav:after {
     content : ""
@@ -269,6 +270,9 @@ nav:after {
     font-weight: 400;
     color: #ddd;
     text-shadow: none;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    line-height: 15px;
     border-top: dotted 1px transparent;
     border-bottom: dotted 1px transparent;
     -webkit-transition: all .15s linear;
