@@ -56,9 +56,6 @@
             pcTemplate += '<li onClick="showInViewer('+ i +')" class="pcThumb"><img src="' +
                 currentPage[i].href + '" alt="' +
                 currentPage[i].title + '" /></li>';
-
-            console.log("The title: " + currentPage[i].title);
-        
         }
 
         pcTemplate += '</ul></div>';
@@ -95,8 +92,6 @@
             slideObj = {};
         }
 
-        console.log("The slides");
-        console.log(slides);
         
         // Paginate the slides
         for(var i = 0; i < slides.length; i++) {
@@ -108,7 +103,6 @@
                 pages[pageCounter].push(slides[i])
             }
         }
-        console.log(pages);
         return pages;
 
     }

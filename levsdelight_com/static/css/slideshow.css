@@ -1,6 +1,11 @@
 body {
     height: 1000;
 }
+
+#caption {
+    padding: 45px 0px 0px 15px;
+    font-size: 21px;
+}
 #thumbs {
     display: inline-block;
 }

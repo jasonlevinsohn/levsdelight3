@@ -57,22 +57,13 @@
             $.ajax({
                 url: '/write_image_to_database',
                 type: "POST",
-                beforeSend: function() {
-                    console.log("Sending the Image Data");
-                },
-
                 complete: function(msg) {
                     var data;
                     data = JSON.parse(msg.responseText);
-                    console.log("Image File Uploaded.");
-                    console.log(data); 
                 },
 
                 error: function(err) {
-                    console.log("We got problems: ");
-                    console.log(err);
                     var parsedErr = JSON.parse(err);
-                    console.log(parsedErr);
                 }
             });
             
@@ -88,7 +79,6 @@ function s3_upload2() {
     fileToUpload = $('#file')[0].files[0]
     filename = fileToUpload.name
     filetype = fileToUpload.type
-    console.log(fileToUpload)
     window.daFile = fileToUpload
     
     // Get the policy document and the signature.
@@ -100,15 +90,11 @@ function s3_upload2() {
             type: filetype
         },
         success: function(msg) {
-            console.log("Signature Generated: ", msg);
             parsed = JSON.parse(msg);
             $('input[name=key]').val('img/' + filename);
             $('input[name=AWSAccessKeyId]').val(parsed.access_id)
             $('input[name=policy]').val(parsed.policy);
             $('input[name=signature]').val(parsed.sig);
-        },
-        error: function(error) {
-            console.log("Error Generating Signature: ", error);
         }
         });
 

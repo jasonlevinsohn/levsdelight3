@@ -98,7 +98,6 @@
 
 	// Primary Galleriffic initialization function that should be called on the thumbnail container.
 	$.fn.galleriffic = function(settings) {
-        console.log("Initializing Gallerific");
 		//  Extend Gallery Object
 		$.extend(this, {
 			// Returns the version of the script

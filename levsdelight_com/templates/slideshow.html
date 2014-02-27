@@ -6,14 +6,12 @@
 
 {% block content %}
 
-<div id="controls"></div>
-<div id="loading"></div>
-<div id="slideshow"></div>
-<div id="caption"></div>
+<div id="caption">
+    {% if slideMonth and slideYear %}
+    {{ slideMonth|capfirst }} | {{ slideYear }} 
+    {% endif %}
+</div>
 
-<!-- <div id="testupload"> -->
-<!--     <a href="/test_upload/">Test Upload</a> -->
-<!-- </div> -->
 
 
 <div id="thumbs">

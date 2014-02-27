@@ -1,6 +1,5 @@
 
 function ajaxLoader() {
-	//console.log(reader.result);
 	
 
 
@@ -13,13 +12,8 @@ function ajaxLoader() {
 	
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState == 4 && ajax.status == 200){
-			//alert(ajax.responseText);
-			//alert('what is going on');
-			console.log('Picture has been loaded');
-			//alert('Picture has been loaded');
 			location.reload(true);
 		} 
-		console.log('Ready State: ' + ajax.readyState + ' Status: ' + ajax.status)
 	}
 	
 	ajax.send(reader.result);
@@ -27,7 +21,6 @@ function ajaxLoader() {
 }
 
 function ajaxLoader2(folderName, slideshowId) {
-	//console.log(reader.result);
 	
 
 
@@ -44,11 +37,9 @@ function ajaxLoader2(folderName, slideshowId) {
 		if (ajax.readyState == 4 && ajax.status == 200){
 			//alert(ajax.responseText);
 			//alert('what is going on');
-			console.log('Picture has been loaded');
 			//alert('Picture has been loaded');
 			location.reload(true);
 		} 
-		console.log('Ready State: ' + ajax.readyState + ' Status: ' + ajax.status)
 	}
 	
 	ajax.send(reader.result);
@@ -67,7 +58,6 @@ function handleFileSelect(evt) {
 		window.files.push(evt.dataTransfer.files);
 		window.imagePath.push(evt.target.result);
 		var ourFiles = evt.dataTransfer.files;
-		console.log(ourFiles);
 		
 	} else {
 		window.files = evt.dataTransfer.files;

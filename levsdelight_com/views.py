@@ -54,11 +54,13 @@ def slideshow(request, year=None, month=None, template='slideshow.html'):
 
     return render_to_response(template, {
             'settingsPath' : sPath,
-            'projectPath' : pPath,
-            'staticPath' : stPath,
-            'staticUrl' : staticUrl,
-            'offline' : offline,
-            'allSlides' : allSlides,
+            'projectPath'  : pPath,
+            'staticPath'   : stPath,
+            'staticUrl'    : staticUrl,
+            'offline'      : offline,
+            'allSlides'    : allSlides,
+            'slideMonth'   : month,
+            'slideYear'    : year
         }, context_instance = RequestContext(request))
 
 def logout_page(request):
