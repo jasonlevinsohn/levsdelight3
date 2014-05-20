@@ -33,6 +33,10 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'levsdelight_com.views.logout_page'),
 
+    # Blog
+    url(r'^getTopBlogs/$', 'levsdelight_com.views.top_ten_blogs'),
+
+
 
     # Needed for Heroku Deployment of Static Files
     # (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),

@@ -3,6 +3,13 @@ levsdelight2
 
 Django App using AngularJS, Grunt, Less, CoffeeScript
 
+## NOTE
+With new OS Maverick, the compiler issues errors instead of warnings
+for unused arguments in executing commands.  This will cause an error when
+installing psycopg2.  It suppress this error to a warning, prepend the following
+to the command pip install psycopg2:
+env ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
+
 ### To start the local development environment:
 
 1. Install Postgressql (MACOSX Postgres.app)

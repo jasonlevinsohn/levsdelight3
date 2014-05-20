@@ -21,6 +21,37 @@ class MonthMap(models.Model):
     def __unicode__(self):
         return "Id: \"%s\" - Month: \"%s\" - Year: \"%s\"" % (self.slideshow_id, self.month, self.year)
 
+class Author(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=40)
+    email = models.EmailField()
+
+    def __unicode__(self):
+        return "Id: %s - %s %s" % (self.id, self.first_name, self.last_name) 
+
+
+class BlogPost(models.Model):
+    postText = models.CharField(max_length=10000)
+    title = models.CharField(max_length=2000)
+    images_id = models.IntegerField()
+    author_id = models.ForeignKey(Author, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __unicode__(self):
+        return "Id: \"%s\" - Title: \"%s\"" % (self.id, self.title)
+
+
+class Comment(models.Model):
+    commenter_name = models.CharField(max_length=50)
+    comment = models.CharField(max_length=7000)
+    post = models.ForeignKey(BlogPost)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return "Id: %s - %s Post Title: %s" % (self.id, self.commenter_name, self.post.title)
+
 # NOTE: After you create the model here, don't forget
 # to register it with the admin library. 
 # Open levsdelight_com/admin.py

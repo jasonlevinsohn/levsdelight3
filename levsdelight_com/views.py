@@ -2,11 +2,21 @@ from django.contrib.auth import logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Slideshow, MonthMap
+from models import Slideshow, MonthMap, BlogPost
 from django.views.decorators.csrf import csrf_exempt
 from levsdelight2 import settings
 import json, os, time, base64, hmac, sha, urllib, hashlib
 import re, datetime
+from django.core import serializers
+
+def top_ten_blogs(request):
+
+    blogs = BlogPost.objects.all()
+
+    serialized_data = serializers.serialize('json', blogs)
+
+    return HttpResponse(serialized_data, mimetype='application/json')
+
 
 
 def test_upload(request, template='testupload.html'):

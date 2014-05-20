@@ -2,6 +2,7 @@ body {
     height: 1000;
 }
 
+
 #caption {
     padding: 45px 0px 0px 15px;
     font-size: 21px;
@@ -94,3 +95,39 @@ body {
 .download-link {
     text-align: right;
 }
+
+/* Blog Preview Section - BEGIN */
+
+#blog-preview {
+    display: inline-block;
+    vertical-align: top;
+    width: 250px;
+    min-height: 500px;
+    /* background-color: yellow; */
+    margin: 15px 0px 0px 40px;
+    border: 1px solid blue;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+#blog-preview h2 {
+    color: black;
+    margin: 0px 0px -4px 5px;
+}
+
+#blog-preview hr.header {
+    height: 10px;
+    background-color: cornflowerblue;
+    border-radius: 7px;
+
+}
+
+#blog-preview .author-timestamp {
+    background-color: grey;
+    color: white;
+    padding-left: 8px;
+    line-height: 17px;
+    border-radius: 8px;
+}
+
+/* Blog Preview Section - END */
