@@ -1,0 +1,33 @@
+{
+  "name": "levsdelight3",
+  "version": "0.0.0",
+  "description": "Lev's Delight Farm Website",
+  "main": "slideshow.html",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonlevinsohn/levsdelight3.git"
+  },
+  "keywords": [
+    "levsdelight",
+    "llama",
+    "petting",
+    "zoo",
+    "chickens",
+    "goats"
+  ],
+  "author": "Jason Levinsohn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonlevinsohn/levsdelight3/issues"
+  },
+  "homepage": "https://github.com/jasonlevinsohn/levsdelight3",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-sass": "^0.7.3"
+  }
+}
