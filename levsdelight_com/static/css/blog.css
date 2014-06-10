@@ -1,0 +1,133 @@
+body {
+    height: 1000;
+}
+
+
+#caption {
+    padding: 45px 0px 0px 15px;
+    font-size: 21px;
+}
+#thumbs {
+    display: inline-block;
+}
+
+#pagination {
+    height: 50px;
+    width: 200px;
+    margin: 40px 0px 0px 14px;
+    padding: 10px 0px 0px 10px;
+    box-sizing: border-box;
+}
+
+#pagination .page {
+    border: 1px solid hsl(0, 0%, 0%);
+    padding: 4px 10px 4px 10px;
+    font-size: 20px;
+    color: hsl(0, 0%, 0%);
+    margin-right: 5px;
+}
+
+#pagination .page:hover {
+    color: hsl(0, 100%, 100%);
+    background-color: hsl(91, 42%, 50%);
+}
+
+#pagination .page.active {
+    color: hsl(0, 100%, 100%);
+    background-color: hsl(247, 100%, 52%);
+}
+
+.pictureChooser {
+    width: 270px;
+    height: 500px;
+}
+
+.pictureChooser ul {
+    padding-left: 12px;
+}
+
+.pcThumb {
+    list-style: none;
+    float: left;
+    margin-right: 20px;
+
+}
+
+.pcThumb img {
+    height: 100px;
+    width: 100px;
+    padding: 2px;
+}
+
+#pictureViewer {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 60px;
+}
+
+#page-navigation {
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    border: 1px solid #000;
+}
+
+#pictureViewer .slide {
+    margin-top: 15px;
+}
+
+#pictureViewer .slide img {
+    width: 550px;
+
+    /* Cool Zoom Transition Effect */
+    -webkit-transition: all .4s ease-in-out;
+       -moz-transition: all .4s ease-in-out;
+        -ms-transition: all .4s ease-in-out;
+}
+
+#pictureViewer .slide img:hover {
+    -webkit-transform: scale(1.7);
+       -moz-transform: scale(1.7);
+        -ms-transform: scale(1.7);
+         -o-transform: scale(1.7);
+}
+
+.download-link {
+    text-align: right;
+}
+
+/* Blog Preview Section - BEGIN */
+
+#blog-preview {
+    display: inline-block;
+    vertical-align: top;
+    width: 250px;
+    min-height: 500px;
+    /* background-color: yellow; */
+    margin: 15px 0px 0px 40px;
+    border: 1px solid blue;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+#blog-preview h2 {
+    color: black;
+    margin: 0px 0px -4px 5px;
+}
+
+#blog-preview hr.header {
+    height: 10px;
+    background-color: cornflowerblue;
+    border-radius: 7px;
+
+}
+
+#blog-preview .author-timestamp {
+    background-color: grey;
+    color: white;
+    padding-left: 8px;
+    line-height: 17px;
+    border-radius: 8px;
+}
+
+/* Blog Preview Section - END */

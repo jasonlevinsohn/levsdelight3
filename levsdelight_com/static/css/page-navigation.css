@@ -22,7 +22,8 @@ nav:after {
 #menu {
     position: relative;
     float: left;
-    width: 949px;
+    width: 1148px;
+    /* width: 949px; */
     margin: 0;
     padding-right: 35px;
     border-radius: 3px;

@@ -9,6 +9,11 @@ import json, os, time, base64, hmac, sha, urllib, hashlib
 import re, datetime
 from django.core import serializers
 
+def blog(request, template='blog.html'):
+    print "Blog Started..."
+
+    return render_to_response(template, {}, context_instance = RequestContext(request))
+
 def top_ten_blogs(request):
 
     blogs = BlogPost.objects.all()

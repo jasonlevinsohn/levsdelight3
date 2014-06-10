@@ -35,6 +35,7 @@ urlpatterns = patterns('',
 
     # Blog
     url(r'^getTopBlogs/$', 'levsdelight_com.views.top_ten_blogs'),
+    url(r'^blog/$', 'levsdelight_com.views.blog'),
 
 
 
