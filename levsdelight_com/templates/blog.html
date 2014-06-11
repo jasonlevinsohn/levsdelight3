@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block css_includes %}
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/slideshow.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog.scss.css" /> -->
 {% endblock %}
 
 {% block content %}
@@ -10,6 +11,10 @@
 <div id="caption">
     Blog
 </div>
+
+<div id='blog-main' ng-app="levs-blog">
+    <div ng-include src=' "{{STATIC_URL}}angular/partials/blog-main.html" '></div>
+</div> <!-- blog-main -->
 
 
 <!-- <div id="blog-preview" ng-app="levs-blog"> -->

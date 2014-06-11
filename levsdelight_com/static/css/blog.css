@@ -1,5 +1,9 @@
-body {
-    height: 1000;
+/* body { */
+/*     height: 1000; */
+/* } */
+
+.blogs-wrapper {
+    border: 1px solid red;
 }
 
 
