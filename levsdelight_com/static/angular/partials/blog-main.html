@@ -1,15 +1,24 @@
 <div class="blogs-wrapper" ng-controller="BlogCtrl">
     <div class="post" ng-repeat="post in posts">
         <div class="post-header">
-            <div class="post-title" style="font-size: 14px; font-weight: bold">
+            <div class="post-title">
                 {{post.fields.title}}
             </div>  <!-- .post-title -->
-            <div class="post-author-timestamp" style="font-size: 10px">
+            <div class="post-author-timestamp">
                 by {{post.fields.author_id}} on {{post.fields.pub_date}}
             </div>  <!-- .post-author-timestamp -->
             <div class="post-body">
                 {{post.fields.postText}}
             </div>
+            <hr class="post-spacer" />
         </div>  <!-- .post-header -->
+        <div class="comments-section">
+            <div class="comments" ng-repeat="comment in comments">
+                <div class="commenter-name">
+                </div>
+                <div class="comment-body">
+                </div>
+            </div> <!-- .comments -->
+        </div> <!-- .comments-section -->
     </div>
 </div>  <!-- .blogs-wrapper -->

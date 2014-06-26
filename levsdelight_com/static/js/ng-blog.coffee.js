@@ -4,15 +4,33 @@
   blogApp = angular.module('levs-blog', []);
 
   blogApp.controller('BlogCtrl', [
-    '$scope', '$http', function($scope, $http) {
-      var posts;
+    '$scope', '$http', '$q', function($scope, $http, $q) {
+      var buildPosts, p1, p2, posts, q1, q2;
       posts = [];
-      return $http.get('/getTopBlogs').success(function(data, status) {
+      q1 = $q.defer();
+      q2 = $q.defer();
+      p1 = q1.promise;
+      p2 = q2.promise;
+      $q.all([p1, p2]).then(function(promiseData) {
+        return buildPosts(promiseData);
+      });
+      buildPosts = function(results) {
+        console.log("Bulid these combine the comments with the posts and add them to scope");
+        return console.log(results);
+      };
+      $http.get('/getComments').success((function(_this) {
+        return function(data, status) {
+          q2.resolve(data);
+        };
+      })(this)).error(function(data, status) {
         console.log(data);
-        return $scope.posts = data;
+        console.log(status);
+      });
+      return $http.get('/getTopBlogs').success(function(data, status) {
+        q1.resolve(data);
       }).error(function(data, status) {
         console.log(data);
-        return console.log(status);
+        console.log(status);
       });
     }
   ]);

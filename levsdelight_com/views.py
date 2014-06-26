@@ -2,12 +2,20 @@ from django.contrib.auth import logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Slideshow, MonthMap, BlogPost
+from models import Slideshow, MonthMap, BlogPost, Comment
 from django.views.decorators.csrf import csrf_exempt
 from levsdelight2 import settings
 import json, os, time, base64, hmac, sha, urllib, hashlib
 import re, datetime
 from django.core import serializers
+
+def get_comments(request):
+    comments = Comment.objects.all()
+
+    serialized_comments = serializers.serialize('json', comments)
+    
+    return HttpResponse(serialized_comments, mimetype='application/json')
+
 
 def blog(request, template='blog.html'):
     print "Blog Started..."
