@@ -13,9 +13,29 @@ blogApp.controller('BlogCtrl', ['$scope', '$http', '$q', ($scope, $http, $q) ->
         .then (promiseData) ->
             buildPosts(promiseData)
 
-    buildPosts = (results)->
+    buildPosts = (results) ->
         console.log "Bulid these combine the comments with the posts and add them to scope"
         console.log results
+
+        # Insert the comments to the matched post
+        posts = results[0]
+        comments = results[1]
+
+        for post in posts
+            postId = post.pk
+            for comment in comments
+                if comment.fields.post is postId
+                    if post.comments?
+                        post.comments.push comment
+                    else
+                        post.comments = []
+                        post.comments.push comment
+
+        console.log posts
+        $scope.posts = posts
+
+
+
 
     # getComments = ->
 

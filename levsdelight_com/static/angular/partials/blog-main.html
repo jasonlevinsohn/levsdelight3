@@ -13,10 +13,12 @@
             <hr class="post-spacer" />
         </div>  <!-- .post-header -->
         <div class="comments-section">
-            <div class="comments" ng-repeat="comment in comments">
+            <div class="comments" ng-repeat="comment in post.comments">
                 <div class="commenter-name">
+                    {{comment.fields.commenter_name}}
                 </div>
                 <div class="comment-body">
+                    {{comment.fields.comment}}
                 </div>
             </div> <!-- .comments -->
         </div> <!-- .comments-section -->
