@@ -1,0 +1,47 @@
+$primary-color: red;
+
+.blogs-wrapper {
+    border: 1px solid $primary-color;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+.post {
+    margin-bottom: 35px;    
+}
+
+#caption {
+    padding: 45px 0px 0px 15px;
+}
+
+.post-title {
+    font-weight: bold;
+    color: darkgrey;
+    font-size: 22px;
+}
+
+.post-author-timestamp {
+    margin-left: 40px;
+    font-style: italic;
+}
+
+.post-body {
+    font-size: 14px;
+    font-family: Futura;
+    color: black;
+}
+
+.comments-section {
+    border: 2px solid blue;
+    border-radius: 6px;
+
+    &.nothing-yet {
+        display: none;
+    }
+}
+
+.commenter-name {
+    border: 1px solid blue;
+    background-color: lightblue;
+    border-radius: 3px;
+}

@@ -11,6 +11,21 @@ module.exports = (grunt) ->
                 dest: 'levsdelight_com/static/js'
                 ext: '.coffee.js' # Generated file extension
 
+        sass:
+            main:
+                options:
+                    style: 'expanded'
+                    sourcemap: true
+                    compass: true
+                files: [{
+                    expand: true,
+                    cwd: 'levsdelight_com/static/scss'
+                    src: ['*.scss']
+                    dest: 'levsdelight_com/static/css'
+                    ext: '.scss.css'
+                }]
+                
+
 
         _watch_:
             options:
@@ -18,12 +33,16 @@ module.exports = (grunt) ->
             coffee:
                 files: ['levsdelight_com/static/js/**/*.coffee']
                 tasks: ['coffee:main']
+            sass:
+                files: ['levsdelight_com/static/scss/**/*.scss']
+                tasks: ['sass:main']
 
 
         grunt.loadNpmTasks 'grunt-contrib-watch'
         grunt.loadNpmTasks 'grunt-contrib-coffee'
+        grunt.loadNpmTasks 'grunt-contrib-sass'
 
-        grunt.registerTask 'default', ['coffee:main']
+        grunt.registerTask 'default', ['coffee:main', 'sass:main']
         grunt.registerTask 'build', ['coffee:main']
         
         grunt.renameTask 'watch', '_watch_'
