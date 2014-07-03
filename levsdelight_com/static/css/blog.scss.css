@@ -24,9 +24,12 @@
 }
 
 .post-body {
-  font-size: 14px;
-  font-family: Futura;
-  color: black;
+  box-sizing: border-box;
+  color: #333333;
+  font-family: proxima_nova_rgregular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  margin: 18px 0px 18px 0px;
 }
 
 .comments-section {
@@ -42,5 +45,36 @@
   background-color: lightblue;
   border-radius: 3px;
 }
+
+/* Blog Preview Section - BEGIN */
+#blog-preview {
+  /* background-color: yellow; */
+  border-radius: 6px;
+  border: 1px solid blue;
+  display: inline-block;
+  margin: 15px 0px 0px 40px;
+  min-height: 500px;
+  padding: 5px;
+  vertical-align: top;
+  width: 250px;
+}
+#blog-preview h2 {
+  color: black;
+  margin: 0px 0px -4px 5px;
+}
+#blog-preview h2 .header {
+  height: 10px;
+  background-color: cornflowerblue;
+  border-radius: 7px;
+}
+#blog-preview .author-timestamp {
+  background-color: grey;
+  color: white;
+  padding-left: 8px;
+  line-height: 17px;
+  border-radius: 8px;
+}
+
+/* Blog Preview Section - END */
 
 /*# sourceMappingURL=blog.scss.css.map */

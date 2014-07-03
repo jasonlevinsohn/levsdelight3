@@ -30,6 +30,7 @@ blogApp.controller('BlogCtrl', ['$scope', '$http', '$q', ($scope, $http, $q) ->
                     else
                         post.comments = []
                         post.comments.push comment
+                else
 
         console.log posts
         $scope.posts = posts

@@ -12,7 +12,8 @@
             </div>
             <hr class="post-spacer" />
         </div>  <!-- .post-header -->
-        <div class="comments-section">
+        <div class="comments-section" ng-class="{'nothing-yet': !post.comments}">
+            <h4>Comments</h4>
             <div class="comments" ng-repeat="comment in post.comments">
                 <div class="commenter-name">
                     {{comment.fields.commenter_name}}

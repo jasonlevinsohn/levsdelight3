@@ -32,6 +32,8 @@
                 post.comments = [];
                 post.comments.push(comment);
               }
+            } else {
+
             }
           }
         }
