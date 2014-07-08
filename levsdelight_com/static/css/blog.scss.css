@@ -1,5 +1,4 @@
 .blogs-wrapper {
-  border: 1px solid red;
   padding-left: 10px;
   padding-top: 15px;
 }
@@ -10,6 +9,7 @@
 
 #caption {
   padding: 45px 0px 0px 15px;
+  font-size: 21px;
 }
 
 .post-title {
@@ -32,18 +32,27 @@
   margin: 18px 0px 18px 0px;
 }
 
-.comments-section {
-  border: 2px solid blue;
-  border-radius: 6px;
+.comments-section h4 {
+  margin: 5px 0px 5px 0px;
+  color: darkgrey;
+  font-weight: bold;
+  font-size: 16px;
 }
 .comments-section.nothing-yet {
   display: none;
 }
 
 .commenter-name {
-  border: 1px solid blue;
-  background-color: lightblue;
-  border-radius: 3px;
+  margin: 7px 0px 0px 5px;
+  font-size: 12px;
+  color: grey;
+}
+
+.comment-body {
+  color: #333333;
+  margin-left: 15px;
+  font-size: 13px;
+  font-style: italic;
 }
 
 /* Blog Preview Section - BEGIN */
