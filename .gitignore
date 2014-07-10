@@ -8,4 +8,5 @@ local_settings.py
 
 
 node_modules/
+levsdelight_com/static/vendor/
 
