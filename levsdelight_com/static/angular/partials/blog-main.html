@@ -5,7 +5,8 @@
                 {{post.fields.title}}
             </div>  <!-- .post-title -->
             <div class="post-author-timestamp">
-                by {{post.fields.author_id}} on {{post.fields.pub_date}}
+                by {{post.fields.author_id[0]}} on {{post.momentDate}} which was
+                 about {{post.momentRelative}}
             </div>  <!-- .post-author-timestamp -->
             <div class="post-body">
                 {{post.fields.postText}}
@@ -16,10 +17,10 @@
             <h4>Comments</h4>
             <div class="comments" ng-repeat="comment in post.comments">
                 <div class="commenter-name">
-                    {{comment.fields.commenter_name}}
+                    {{comment.momentRelative}} {{comment.fields.commenter_name}} said:
                 </div>
                 <div class="comment-body">
-                    {{comment.fields.comment}}
+                    "{{comment.fields.comment}}"
                 </div>
             </div> <!-- .comments -->
         </div> <!-- .comments-section -->

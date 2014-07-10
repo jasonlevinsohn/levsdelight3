@@ -22,9 +22,12 @@ blogApp.controller('BlogCtrl', ['$scope', '$http', '$q', ($scope, $http, $q) ->
         comments = results[1]
 
         for post in posts
+            post.momentRelative = moment(post.fields.created_at).fromNow()
+            post.momentDate = moment(post.fields.created_at).format("MMMM Do, YYYY")
             postId = post.pk
             for comment in comments
                 if comment.fields.post is postId
+                    comment.momentRelative = moment(comment.fields.created_at).fromNow()
                     if post.comments?
                         post.comments.push comment
                     else

@@ -22,10 +22,13 @@
         comments = results[1];
         for (_i = 0, _len = posts.length; _i < _len; _i++) {
           post = posts[_i];
+          post.momentRelative = moment(post.fields.created_at).fromNow();
+          post.momentDate = moment(post.fields.created_at).format("MMMM Do, YYYY");
           postId = post.pk;
           for (_j = 0, _len1 = comments.length; _j < _len1; _j++) {
             comment = comments[_j];
             if (comment.fields.post === postId) {
+              comment.momentRelative = moment(comment.fields.created_at).fromNow();
               if (post.comments != null) {
                 post.comments.push(comment);
               } else {
