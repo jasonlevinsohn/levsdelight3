@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Slideshow, MonthMap, BlogPost, Comment
+from models import Slideshow, MonthMap, BlogPost, Comment, Author
 from django.views.decorators.csrf import csrf_exempt
 from levsdelight2 import settings
 import json, os, time, base64, hmac, sha, urllib, hashlib
@@ -26,7 +26,11 @@ def top_ten_blogs(request):
 
     blogs = BlogPost.objects.all()
 
-    serialized_data = serializers.serialize('json', blogs)
+    # We need natural key arg for getting first_name & last_name
+    # as foreign keys when querying BlogPost
+    serialized_data = serializers.serialize('json', blogs, use_natural_keys=True)
+    print serialized_data
+
 
     return HttpResponse(serialized_data, mimetype='application/json')
 

@@ -27,7 +27,15 @@ class Author(models.Model):
     email = models.EmailField()
 
     def __unicode__(self):
-        return "Id: %s - %s %s" % (self.id, self.first_name, self.last_name) 
+        return "Id: %s - %s %s" % (self.id, self.first_name, self.last_name)
+
+    # We need these two definitions for getting first_name & last_name
+    # as foreign keys when querying BlogPost
+    def natural_key(self):
+        return (self.first_name, self.last_name)
+
+    class Meta:
+        unique_together = (('first_name', 'last_name'),)
 
 
 class BlogPost(models.Model):
