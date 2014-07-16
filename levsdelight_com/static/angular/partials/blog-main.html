@@ -23,6 +23,22 @@
                     "{{comment.fields.comment}}"
                 </div>
             </div> <!-- .comments -->
+            <div class="add-comment">
+                <h4>Add Comment</h4>
+                <form action="/comment/add" method="PUT">
+                    <fieldset>
+                        <label for="comment-name">Name: </label>
+                        <input type="text" id="comment-name" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="comment-text">Message: </label>
+                        <textarea rows="5" cols="40" id="comment-text">
+                        </textarea>
+                    </fieldset>
+
+                    <input id="comment-submit" type="submit" value="Post" />
+                </form>
+            </div> <!-- .add-comment -->
         </div> <!-- .comments-section -->
     </div>
 </div>  <!-- .blogs-wrapper -->
