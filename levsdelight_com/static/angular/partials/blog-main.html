@@ -23,22 +23,44 @@
                     "{{comment.fields.comment}}"
                 </div>
             </div> <!-- .comments -->
-            <div class="add-comment">
-                <h4>Add Comment</h4>
-                <form action="/comment/add" method="PUT">
-                    <fieldset>
-                        <label for="comment-name">Name: </label>
-                        <input type="text" id="comment-name" />
-                    </fieldset>
-                    <fieldset>
-                        <label for="comment-text">Message: </label>
-                        <textarea rows="5" cols="40" id="comment-text">
-                        </textarea>
-                    </fieldset>
-
-                    <input id="comment-submit" type="submit" value="Post" />
-                </form>
-            </div> <!-- .add-comment -->
         </div> <!-- .comments-section -->
-    </div>
+        <div class="add-comment">
+            <h4>Add Comment</h4>
+            <form ng-submit="addComment()" name="commentForm">
+                <fieldset>
+                    <label for="comment-name">Name: </label>
+                    <input type="text" id="comment-name" name="commentName" ng-model="commentName" required/>
+                    <span
+                        ng-show="commentForm.commentName.$error.required
+                        && commentForm.commentName.$dirty"
+                        style="color: red;">
+                        &nbsp;Name is required!
+                    </span>
+                </fieldset>
+                <fieldset>
+                    <label for="comment-text">Message: </label>
+                    <textarea
+                        rows="5"
+                        cols="40"
+                        id="comment-text"
+                        name="commentMessage"
+                        ng-model="commentMessage"
+                        required>
+                    </textarea>
+                    <span
+                        ng-show="commentForm.commentMessage.$error.required
+                        && commentForm.commentMessage.$dirty"
+                        style="color: red; position: absolute;">
+                        &nbsp;Message is required!
+                    </span>
+                </fieldset>
+
+                <input
+                    id="comment-submit"
+                    type="submit"
+                    value="Post"
+                    ng-disabled="commentForm.$invalid" />
+            </form>
+        </div> <!-- .add-comment -->
+    </div> <!-- #post -->
 </div>  <!-- .blogs-wrapper -->

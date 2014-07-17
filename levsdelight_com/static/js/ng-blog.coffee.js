@@ -7,6 +7,14 @@
     '$scope', '$http', '$q', function($scope, $http, $q) {
       var buildPosts, p1, p2, posts, q1, q2;
       posts = [];
+      $scope.commentName = "";
+      $scope.commentMessage = "";
+      $scope.addComment = function() {
+        $scope.commentMessage = $scope.commentName;
+        console.log("Commment");
+        console.log("" + $scope.commentName + ": " + $scope.commentMessage);
+        return console.log($scope);
+      };
       q1 = $q.defer();
       q2 = $q.defer();
       p1 = q1.promise;

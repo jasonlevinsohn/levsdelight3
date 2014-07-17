@@ -2,8 +2,16 @@ blogApp = angular.module 'levs-blog', []
 
 blogApp.controller('BlogCtrl', ['$scope', '$http', '$q', ($scope, $http, $q) ->
     posts = []
+    $scope.commentName = ""
+    $scope.commentMessage = ""
 
-    ##### Oh goodness we need promisses here too
+    $scope.addComment = ->
+        $scope.commentMessage = $scope.commentName
+        console.log "Commment"
+        console.log "#{$scope.commentName}: #{$scope.commentMessage}"
+        console.log $scope
+
+    ##### Oh goodness we need promises here too
     q1 = $q.defer()
     q2 = $q.defer()
     p1 = q1.promise
@@ -39,19 +47,6 @@ blogApp.controller('BlogCtrl', ['$scope', '$http', '$q', ($scope, $http, $q) ->
         $scope.posts = posts
 
 
-
-
-    # getComments = ->
-
-    #     console.log "Let's get those comments"
-    #     ####### Figure out how to do a LIST COMPREHENSION HERE #######
-    #     ####### Oh goodness, we are going to need Promises here too
-    #     postIds = []
-    #     commentData = {}
-    #     for post in posts
-    #         postIds.push(post.pk)
-    #     console.log postIds
-
     $http.get('/getComments')
         .success (data, status) =>
             q2.resolve(data)
@@ -69,6 +64,7 @@ blogApp.controller('BlogCtrl', ['$scope', '$http', '$q', ($scope, $http, $q) ->
             console.log data
             console.log status
             return
+
 ])
 
 
