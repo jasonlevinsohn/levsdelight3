@@ -2,14 +2,25 @@ blogApp = angular.module 'levs-blog', []
 
 blogApp.controller('BlogCtrl', ['$scope', '$http', '$q', ($scope, $http, $q) ->
     posts = []
-    $scope.commentName = ""
-    $scope.commentMessage = ""
+    # $scope.commentName = "Jason"
+    # $scope.commentMessage = ""
 
     $scope.addComment = ->
         $scope.commentMessage = $scope.commentName
         console.log "Commment"
         console.log "#{$scope.commentName}: #{$scope.commentMessage}"
         console.log $scope
+
+        commentData =
+            name: $scope.commentName
+            comment: $scope.commentMessage
+        console.log commentData
+        $http.post '/postComment/', commentData
+            .success (resp) ->
+                console.log resp
+                return false
+
+        return false
 
     ##### Oh goodness we need promises here too
     q1 = $q.defer()

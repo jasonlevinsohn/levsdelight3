@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     url(r'^getTopBlogs/$', 'levsdelight_com.views.top_ten_blogs'),
     url(r'^blog/$', 'levsdelight_com.views.blog'),
     url(r'^getComments/$', 'levsdelight_com.views.get_comments'),
+    url(r'^postComment/$', 'levsdelight_com.views.save_comment'),
 
 
 

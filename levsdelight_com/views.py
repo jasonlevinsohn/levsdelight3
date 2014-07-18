@@ -16,9 +16,17 @@ def get_comments(request):
     
     return HttpResponse(serialized_comments, mimetype='application/json')
 
+@csrf_exempt
+def save_comment(request):
+
+    req = request.REQUEST
+    name = req['name']
+    comment = req['comment']
+
+    print "Name: %s Comment: %s" % (name, comment)
+
 
 def blog(request, template='blog.html'):
-    print "Blog Started..."
 
     return render_to_response(template, {}, context_instance = RequestContext(request))
 
@@ -29,7 +37,6 @@ def top_ten_blogs(request):
     # We need natural key arg for getting first_name & last_name
     # as foreign keys when querying BlogPost
     serialized_data = serializers.serialize('json', blogs, use_natural_keys=True)
-    print serialized_data
 
 
     return HttpResponse(serialized_data, mimetype='application/json')
@@ -58,7 +65,6 @@ def home(request, template='slideshow.html'):
 
 def slideshow(request, year=None, month=None, template='slideshow.html'):
 
-    print "The selected slideshow is %s %s" % (month, year)
     sPath = settings.SETTINGS_ROOT
     pPath = settings.PROJECT_ROOT
     stPath = settings.STATIC_ROOT
@@ -72,11 +78,8 @@ def slideshow(request, year=None, month=None, template='slideshow.html'):
         
     map_id = mapObject[0].slideshow_id
     objects_returned = mapObject.count()
-    print "Slideshow Id: %s and the count is: %s" % (map_id, objects_returned)
     allSlides = Slideshow.objects.filter(slideshow_id=map_id)
 
-    print "The value of all slides: "
-    print allSlides
     # @@@@@@@@@@@ LAST MOD @@@@@@@@@@@@@@@@@@
 
     return render_to_response(template, {
@@ -93,33 +96,24 @@ def slideshow(request, year=None, month=None, template='slideshow.html'):
 def logout_page(request):
     
     logout(request)
-    print "what is happening"
     return HttpResponseRedirect('/')
 
 @csrf_exempt
 def upload_image(request):
-    print "Receiving File from Mobile Device....\n\n"
-    print request
-    print "The Files: \n" 
-    file = request.FILES['file']
-    print "One File: %s" % (file)
-    print "File Attr: "
-    print file
-    print request.FILES
 
-    print "The Requests: \n\n"
+    file = request.FILES['file']
+
     desc = request.REQUEST['description']
     title = request.REQUEST['title']
     month = request.REQUEST['month']
     report = "Desc: %s\n Title: %s\n Month: %s" % (desc, title, month)
-    print "Desc: %s\n Title: %s\n Month: %s" % (desc, title, month)
 
 
     return HttpResponse("Hey, I appreciate the file. \n\n %s" % (report))
 
 @csrf_exempt
 def write_image_to_database(request):
-    print "Write that stuff"
+
     filePath = request.REQUEST['path']
     title = request.REQUEST['title']
     desc = request.REQUEST['desc']
@@ -157,10 +151,6 @@ def write_image_to_database(request):
 
     picture_object.save()
 
-
-    print "The file %s has a title of %s and desc: %s" % (filePath, title, desc)
-    print "The Month has an id of: %s" % (monthId.slideshow_id)
-    
     return HttpResponse("The server says: Picture has been persisted")
 
 @csrf_exempt
@@ -241,6 +231,5 @@ def sign_s3_upload(request):
 
 
             }
-    print "SENDING BACK SIG"
 
     return HttpResponse(json.dumps(result))
