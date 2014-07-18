@@ -9,13 +9,11 @@
       posts = [];
       $scope.addComment = function() {
         var commentData;
-        $scope.commentMessage = $scope.commentName;
         console.log("Commment");
-        console.log("" + $scope.commentName + ": " + $scope.commentMessage);
-        console.log($scope);
+        console.log("" + this.commentName + ": " + this.commentMessage);
         commentData = {
-          name: $scope.commentName,
-          comment: $scope.commentMessage
+          name: this.commentName,
+          comment: this.commentMessage
         };
         console.log(commentData);
         $http.post('/postComment/', commentData).success(function(resp) {

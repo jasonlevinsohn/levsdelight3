@@ -19,11 +19,9 @@ def get_comments(request):
 @csrf_exempt
 def save_comment(request):
 
-    req = request.REQUEST
-    name = req['name']
-    comment = req['comment']
-
-    print "Name: %s Comment: %s" % (name, comment)
+    req = json.loads(request.body)
+    print "Name: %s, Comment: %s" % (req['name'], req['comment'])
+    return HttpResponse("%s's comment has been saved." % req['name'])
 
 
 def blog(request, template='blog.html'):
