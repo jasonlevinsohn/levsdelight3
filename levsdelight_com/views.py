@@ -21,6 +21,11 @@ def save_comment(request):
 
     req = json.loads(request.body)
     print "Name: %s, Comment: %s" % (req['name'], req['comment'])
+
+    #### JULY 17th, 2014 - START FROM HERE
+    #### NOW WE SEND OUT AN EMAIL AND PERSIST THE COMMENT ON THE CURRENTLY
+    #### RENDERED BROWSER.  BUT IT IS NOT PERSISTED UNTIL NAT OR I CHECK OFF
+    #### ON IT
     return HttpResponse("%s's comment has been saved." % req['name'])
 
 
